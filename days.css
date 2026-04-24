@@ -23,7 +23,12 @@ h1 {
 #school {
     font-size: 1.2rem;
     color: #333;
-    margin-bottom: 30px;
+    margin-bottom: 2px;
+}
+#hours {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
 }
 
 div {

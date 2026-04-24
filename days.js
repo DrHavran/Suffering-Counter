@@ -60,9 +60,10 @@ function updateTimers() {
         `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
     const workingDays = countWorkingDays(now, new Date(targetDate));
-    document.getElementById("school").textContent =
-        `${workingDays.length} school days left`;
+    document.getElementById("school").innerHTML =
+        `<b>${workingDays.length}</b> school days left`;
 
+    let totalHours = 0
     for (const subject in weeklySchedule) {
         let total = 0;
         for (const day of workingDays) {
@@ -71,8 +72,10 @@ function updateTimers() {
                 total += weeklySchedule[subject][dayName];
             }
         }
-        document.getElementById(subject).textContent = `${total} hodin`;
+        totalHours += total
+        document.getElementById(subject).innerHTML = `${total} hodin`;
     }
+    document.getElementById("hours").innerHTML = `<b>${totalHours}</b> school hours left`;
 }
 
 function isSpecialDay(date) {
