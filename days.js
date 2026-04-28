@@ -9,7 +9,7 @@ const weeklySchedule = {
     Matika: { wednesday: 2, thursday: 2 },
     Manažerské: { monday: 1 },
     Sítě: { tuesday: 2 },
-    OPS: { thursday: 2 },
+    OPS: { tuesday: 2 },
     Občanka: { thursday: 1 },
     Praktické: { monday: 2 },
     Programování: { friday: 2 },
