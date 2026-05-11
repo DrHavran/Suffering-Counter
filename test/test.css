@@ -4,6 +4,7 @@ html {
     margin: 0;
     padding: 0;
     overscroll-behavior: none;
+    overflow-y: scroll;
 }
 
 body {
@@ -16,15 +17,6 @@ body {
     align-items: center;
     min-height: 100vh;
     overflow-x: hidden;
-}
-
-body::-webkit-scrollbar {
-    width: 0;
-    background: transparent;
-}
-
-body {
-    scrollbar-width: none;
 }
 
 /* ---------- HEADER (full-width tab bar) ---------- */

@@ -4,7 +4,7 @@ html, body {
     margin: 0;
     padding: 0;
     overscroll-behavior: none;
-    scrollbar-width: 0px;
+    overflow-y: scroll;
 }
 
 body {
@@ -16,15 +16,6 @@ body {
     align-items: center;
     min-height: 100vh;
     overflow-x: hidden;
-}
-
-body::-webkit-scrollbar {
-    width: 0;
-    background: transparent;
-}
-
-body {
-    scrollbar-width: none;
 }
 
 /* ---------- HEADINGS ---------- */
