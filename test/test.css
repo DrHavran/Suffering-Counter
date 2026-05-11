@@ -1,0 +1,149 @@
+/* ---------- BASE & LAYOUT ---------- */
+html {
+    background: white;
+    margin: 0;
+    padding: 0;
+    overscroll-behavior: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ---------- HEADER (full-width tab bar) ---------- */
+header {
+    width: 100%;
+    background-color: #2c2c2c;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+header a {
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 12px 30px;
+    transition: 0.2s;
+    border-bottom: 3px solid transparent;
+}
+
+header a:hover {
+    background-color: #3a3a3a;
+    border-bottom-color: #ff4d4d;
+    color: white;
+}
+
+/* ---------- MAIN CONTENT ---------- */
+h1 {
+    color: #525252;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+#mainDiv {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Test item styling (created by JavaScript) */
+.test-item {
+    background: #fff;
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-left: 5px solid #ff4d4d;
+}
+
+.test-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.18);
+}
+
+.test-subject {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #2c2c2c;
+    margin-bottom: 8px;
+}
+
+.test-description {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* Optional: if you also include a date */
+.test-date {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 6px;
+}
+
+/* ---------- FOOTER (gray bar, sticky) ---------- */
+footer {
+    margin-top: auto;
+    padding: 20px;
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+}
+
+footer p {
+    margin: 0;
+    color: #ccc;
+}
+
+footer a {
+    color: #ffaaaa;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+}
+
+footer a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* GitHub icon image (PNG) */
+.github-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+    filter: brightness(0) invert(1);
+}
+
+.hidden {
+    visibility: hidden;
+    height: 0px;
+}

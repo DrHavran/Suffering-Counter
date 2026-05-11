@@ -1,3 +1,11 @@
+/* ---------- BASE & LAYOUT ---------- */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overscroll-behavior: none;
+}
+
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -5,40 +13,46 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
+/* ---------- HEADINGS ---------- */
 h2 {
     color: #525252;
     margin-bottom: -15px;
 }
 
-#timer {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #ff4d4d;
-    margin: 5px 0 15px 0;
-}
-
+/* ---------- TIMERS (common styles) ---------- */
+#timer,
 #timerLong {
+    padding: 5px 20px 0 20px;
     font-size: 2rem;
     font-weight: bold;
-    color: #9e1b8a;
     margin: 5px 0 15px 0;
 }
-
-#school {
-    font-size: 1.2rem;
-    color: #333;
-    margin-bottom: 2px;
+#timer {
+    color: #ff4d4d;
 }
+#timerLong {
+    color: #9e1b8a;
+}
+
+/* ---------- INFO PARAGRAPHS ---------- */
+#school,
 #hours {
     font-size: 1.2rem;
     color: #333;
+}
+#school {
+    margin-bottom: 2px;
+}
+#hours {
     margin-bottom: 10px;
 }
 
-div {
+/* ---------- SUBJECT GRID ---------- */
+#specificClasses {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 12px;
@@ -46,19 +60,19 @@ div {
     max-width: 900px;
 }
 
-#specificClasses p {
+#specificClasses > p {
     background: #fff;
     padding: 15px;
     border-radius: 12px;
     text-align: center;
     font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     box-shadow: 0 3px 8px rgba(0,0,0,0.12);
     transition: transform 0.2s, box-shadow 0.2s;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     position: relative;
 }
 
@@ -71,16 +85,16 @@ div {
     text-transform: capitalize;
 }
 
-#specificClasses p:hover {
+#specificClasses > p:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 12px rgba(0,0,0,0.18);
 }
 
-
+/* ---------- BUTTON ---------- */
 button {
     margin-top: 3ex;
-    background-color: #ff4d4d;     
-    color: #fff;                     
+    background-color: #ff4d4d;
+    color: #fff;
     font-weight: bold;
     font-size: 1rem;
     padding: 10px 20px;
@@ -92,7 +106,7 @@ button {
 }
 
 button:hover {
-    background-color: #e04343;   
+    background-color: #e04343;
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0,0,0,0.2);
 }
@@ -102,7 +116,9 @@ button:active {
     box-shadow: 0 3px 6px rgba(0,0,0,0.15);
 }
 
+/* ---------- CURRENT DAY INDICATOR ---------- */
 #current {
+    margin-bottom: 50px;
     margin-top: 10px;
     font-weight: 600;
     font-size: 1rem;
@@ -119,6 +135,7 @@ button:active {
     background-color: #e8e8e8;
 }
 
+/* ---------- TIMER CONTAINER ---------- */
 .down {
     display: flex;
     flex-direction: column;
@@ -132,4 +149,82 @@ button:active {
     text-align: center;
     font-weight: 600;
     box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+    display: flex;
+    justify-content: space-between;
+}
+
+/* ---------- HEADER (online/local links) ---------- */
+header {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    background-color: #2c2c2c;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+header a {
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 12px 30px;
+    transition: 0.2s;
+    border-bottom: 3px solid transparent;
+}
+
+header a:hover {
+    background-color: #3a3a3a;
+    border-bottom-color: #ff4d4d;
+    color: white;
+}
+
+/* ---------- FOOTER (gray bar, sticky) ---------- */
+footer {
+    margin-top: auto;               
+    padding: 20px;
+    background-color: #2c2c2c;   
+    color: #e0e0e0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+}
+
+footer p {
+    margin: 0;
+    color: #ccc;
+}
+
+footer a {
+    color: #ffaaaa;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+}
+
+footer a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* GitHub icon image (PNG) */
+.github-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+    filter: brightness(0) invert(1);   /* makes icon white on dark background */
+}
+
+.hidden {
+    visibility: hidden;
+    height: 0px;
 }
