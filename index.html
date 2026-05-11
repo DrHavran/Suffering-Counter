@@ -3,17 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="days.css">
+    <link rel="stylesheet" href="index.css">
     <link rel="icon" href="https://cdn3.emoji.gg/emojis/8390-suicide.png" type="image/x-icon">
     <title>Suffering counter</title>
 </head>
 <body>
+    <header>
+        <a href="https://drhavran.github.io/Suffering-Counter/test/test.html">online</a> 
+        <a href="file:///C:/Users/Havran/Desktop/Code/Suffering-Counter/test/test.html">local</a>
+    </header>
+
     <h1>Konec utrpení</h1>
-    <p id="timer"></p>
     <p id="school"></p>
     <p id="hours"></p>
+    <div id="timers">
+        <div class="down">
+            <h2>Do konce roku</h2>
+            <p id="timer"></p>
+        </div>
+        <div class="down">
+            <h2>Do konce školy</h2>
+            <p id="timerLong"></p>
+        </div>
+    </div>
     <h1>Zbývající hodiny:</h1>
-    <div>
+    <div id="specificClasses">
         <p id="Angličtina"></p>
         <p id="Čeština"></p>
         <p id="Fyzika"></p>
@@ -33,6 +47,12 @@
     <button onclick="switchDays()">Switch seminar days</button>
     <p id="current">Currently: Úterý</p>
 
-    <script src="days.js"></script>
+
+    <footer>
+        <p>version 1.2.2</p>
+        <a href="https://github.com/DrHavran">GitHub</a>
+        <a href="https://github.com/DrHavran/Suffering-Counter">Github page</a>
+    </footer>
+    <script src="index.js"></script>
 </body>
 </html>
