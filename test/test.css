@@ -18,6 +18,15 @@ body {
     overflow-x: hidden;
 }
 
+body::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
+body {
+    scrollbar-width: none;
+}
+
 /* ---------- HEADER (full-width tab bar) ---------- */
 header {
     width: 100%;
