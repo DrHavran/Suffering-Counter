@@ -1,5 +1,5 @@
-const endOfYearDate = new Date("2026-06-27T00:00:00").getTime()
-const endOfSchoolDate = new Date("2028-07-01T00:00:00").getTime()
+const endOfYearDate = new Date("2026-06-27T00:00:00").getTime();
+const endOfSchoolDate = new Date("2028-07-01T00:00:00").getTime();
 
 const weeklySchedule = {
     Angličtina: { wednesday: 2, thursday: 2 },
@@ -20,20 +20,20 @@ const weeklySchedule = {
 };
 
 const specialPeriods = [
-    ["2026-04-06", "2026-04-06"], //velikonoce
-    ["2026-05-01", "2026-05-01"], //svátek
-    ["2026-05-08", "2026-05-08"], //svátek
-    ["2026-05-05", "2026-05-05"], //čistička
-    ["2026-05-18", "2026-05-22"], //kozárky
-    ["2026-06-08", "2026-06-12"], //praxe
-    ["2026-06-15", "2026-06-19"]  //praxe
+    ["2026-05-18", "2026-05-22"], // kozárky
+    ["2026-06-08", "2026-06-12"], // praxe
+    ["2026-06-15", "2026-06-19"], // praxe
+    ["2026-06-22", "2026-06-26"], // last week
 ];
+
+const daysNotInSchool = [];
 
 updateTimers();
 setInterval(updateTimers, 1000);
 
-let seminarOnTuesday = true
-function switchDays(){
+let seminarOnTuesday = true;
+
+function switchDays() {
     if (seminarOnTuesday) {
         delete weeklySchedule["Seminář"].tuesday;
         weeklySchedule["Seminář"].friday = 2;
@@ -44,72 +44,69 @@ function switchDays(){
         document.getElementById("current").textContent = "Currently: Úterý";
     }
     seminarOnTuesday = !seminarOnTuesday;
-
     updateTimers();
 }
 
-function updateTimers() {
-    const now = new Date();
-
-    //  Calculates time till end of the year
-    diff = endOfYearDate - now;
-
-    days = Math.floor(diff / (1000*60*60*24));
-    hours = Math.floor((diff / (1000*60*60)) % 24);
-    minutes = Math.floor((diff / (1000*60)) % 60);
-    seconds = Math.floor((diff / 1000) % 60);
-
-    document.getElementById("timer").textContent =
-        `${days}d ${hours}h ${minutes}m ${seconds}s`;
-
-
-    //  Calculates time till čtvrťák
-    diff = endOfSchoolDate - now;
-
-    days = Math.floor(diff / (1000*60*60*24));
-    hours = Math.floor((diff / (1000*60*60)) % 24);
-    minutes = Math.floor((diff / (1000*60)) % 60);
-    seconds = Math.floor((diff / 1000) % 60);
-    
-    document.getElementById("timerLong").textContent =
-        `${days}d ${hours}h ${minutes}m ${seconds}s`;
-
-
-    // Counts amount of working days
-    const workingDays = countWorkingDays(now, new Date(endOfYearDate));
-    document.getElementById("school").innerHTML =
-        `<b>${workingDays.length}</b> school days left`;
-
-    //  Counts specific hours
-    let totalHours = 0
-    for (const subject in weeklySchedule) {
-        let total = 0;
-        for (const day of workingDays) {
-            const dayName = ["sunday","monday","tuesday","wednesday","thursday","friday","saturday"][day.getDay()];
-            if (weeklySchedule[subject][dayName]) {
-                total += weeklySchedule[subject][dayName];
-            }
-        }
-        totalHours += total
-        document.getElementById(subject).innerHTML = `${total} hodin`;
-    }
-    document.getElementById("hours").innerHTML = `<b>${totalHours}</b> school hours left`;
+function formatTimeRemaining(ms) {
+    const days = Math.floor(ms / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((ms / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((ms / (1000 * 60)) % 60);
+    const seconds = Math.floor((ms / 1000) % 60);
+    return `${days}d ${hours}h ${minutes}m ${seconds}s`;
 }
 
-function isSpecialDay(date) {
-    const iso = date.toISOString().split("T")[0];
-    return specialPeriods.some(([start, end]) => iso >= start && iso <= end);
-}
-
-function countWorkingDays(start, end) {
+function countDays(start, end, excludePredicate) {
     const days = [];
     let d = new Date(start);
     while (d < end) {
         const day = d.getDay();
-        if (day !== 0 && day !== 6 && !isSpecialDay(d)) {
+        if (day !== 0 && day !== 6 && !excludePredicate(d)) {
             days.push(new Date(d));
         }
         d.setDate(d.getDate() + 1);
     }
     return days;
+}
+
+function updateTimers() {
+    const now = new Date();
+
+    // time till end of the year
+    document.getElementById("timer").textContent = formatTimeRemaining(endOfYearDate - now);
+
+    // time till čtvrťák
+    document.getElementById("timerLong").textContent = formatTimeRemaining(endOfSchoolDate - now);
+
+    const daysInSchool = countDays(now, new Date(endOfYearDate), isSpecialDay);
+    document.getElementById("daysInSchool").innerHTML = `<b>${daysInSchool.length}</b> days in school left`;
+
+    const totalDays = countDays(now, new Date(endOfYearDate), isTotal);
+    document.getElementById("totalDays").innerHTML = `<b>${totalDays.length}</b> total days left`;
+
+    let totalHours = 0;
+    for (const subject in weeklySchedule) {
+        let total = 0;
+        for (const day of daysInSchool) {
+            const dayName = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"][day.getDay()];
+            if (weeklySchedule[subject][dayName]) {
+                total += weeklySchedule[subject][dayName];
+            }
+        }
+        totalHours += total;
+        document.getElementById(subject).innerHTML = `${total} hodin`;
+    }
+    document.getElementById("hours").innerHTML = `<b>${totalHours}</b> school hours left`;
+}
+
+function isDateInRanges(date, ranges) {
+    const iso = date.toISOString().split("T")[0];
+    return ranges.some(([start, end]) => iso >= start && iso <= end);
+}
+
+function isSpecialDay(date) {
+    return isDateInRanges(date, specialPeriods) || isDateInRanges(date, daysNotInSchool);
+}
+
+function isTotal(date) {
+    return isDateInRanges(date, daysNotInSchool);
 }
