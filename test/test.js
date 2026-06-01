@@ -3,11 +3,11 @@ fetch('https://docs.google.com/document/d/1sElbGbpXAX1VjE1Yi-iSkn152asdpYRcN-USU
   .then(html => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
-    const elements = doc.querySelectorAll('.c0');
+    const elements = doc.querySelectorAll('span');
     const container = document.getElementById('mainDiv');
 
 
-    if(elements.length === 0){
+    if(elements.length === 1){
         document.getElementById("info").innerHTML = "No tests!"
     }else{
         container.innerHTML = '';
