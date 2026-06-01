@@ -4,58 +4,60 @@ fetch('https://docs.google.com/document/d/1sElbGbpXAX1VjE1Yi-iSkn152asdpYRcN-USU
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
     const elements = doc.querySelectorAll('span');
-    const validElements = Array.from(elements).filter(el => el.textContent.split(';').length >= 3);
+    const validElements = Array.from(elements).filter(el => {
+      const parts = el.textContent.split(';').map(p => p.trim());
+      if (parts.length < 3) return false;
+      const date = parts[0];
+      if (!/^\d{1,2}\.\d{1,2}\.\d{4}$/.test(date)) return false;
+      return !isExpired(date);
+    });
+    
     const container = document.getElementById('mainDiv');
-
-    console.log(elements.length)
-
-    if(validElements.length === 0){
-        document.getElementById("info").innerHTML = "No tests!"
-        console.log("There is only title!")
-    }else{
-        container.innerHTML = '';
-        console.log("there is more then a title -.-")
+    
+    console.log(elements.length);
+    
+    if (validElements.length === 0) {
+      document.getElementById("info").innerHTML = "No tests!";
+      console.log("No valid tests found");
+    } else {
+      container.innerHTML = '';
+      console.log("Displaying " + validElements.length + " test(s)");
     }
 
     validElements.forEach(element => {
-        const text = element.textContent
-        const parts = text.split(';').map(p => p.trim());
-        console.log(parts)
-        const date = parts[0]
-        if (!/^\d{1,2}\.\d{1,2}\.\d{4}$/.test(date)) return;
-
-        if (!isExpired(date)) {
-            const mainDiv = document.createElement('div');
-            mainDiv.className = 'test-item';
-            
-            const timeDiv = document.createElement('div');
-            timeDiv.className = 'test-date';
-            timeDiv.textContent = date;
-            
-            const titleDiv = document.createElement('div');
-            titleDiv.className = 'test-subject';
-            titleDiv.textContent = parts[1];
-            
-            const descDiv = document.createElement('div');
-            descDiv.className = 'test-description';
-            descDiv.textContent = parts[2];
-            
-            mainDiv.appendChild(timeDiv);
-            mainDiv.appendChild(titleDiv);
-            mainDiv.appendChild(descDiv);
-            container.appendChild(mainDiv);
-        }
+      const text = element.textContent;
+      const parts = text.split(';').map(p => p.trim());
+      const date = parts[0];
+      
+      const mainDiv = document.createElement('div');
+      mainDiv.className = 'test-item';
+      
+      const timeDiv = document.createElement('div');
+      timeDiv.className = 'test-date';
+      timeDiv.textContent = date;
+      
+      const titleDiv = document.createElement('div');
+      titleDiv.className = 'test-subject';
+      titleDiv.textContent = parts[1];
+      
+      const descDiv = document.createElement('div');
+      descDiv.className = 'test-description';
+      descDiv.textContent = parts[2];
+      
+      mainDiv.appendChild(timeDiv);
+      mainDiv.appendChild(titleDiv);
+      mainDiv.appendChild(descDiv);
+      container.appendChild(mainDiv);
     });
-});
+  });
 
 function parseCzechDate(dateStr) {
-    const [day, month, year] = dateStr.split('.');
-    return new Date(year, month - 1, day);
+  const [day, month, year] = dateStr.split('.');
+  return new Date(year, month - 1, day);
 }
-
 function isExpired(dateStr) {
-    const date = parseCzechDate(dateStr);
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    return date < today;
+  const date = parseCzechDate(dateStr);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return date < today;
 }
