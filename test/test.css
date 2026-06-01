@@ -1,9 +1,18 @@
 /* ---------- BASE & LAYOUT ---------- */
+html {
+    overflow-y: scroll;
+}
+
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
     overscroll-behavior: none;
+}
+
+h2{
+    color: #ff4d4d;
+    text-align: center;
 }
 
 body {

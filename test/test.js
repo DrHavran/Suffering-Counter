@@ -5,7 +5,13 @@ fetch('https://docs.google.com/document/d/1sElbGbpXAX1VjE1Yi-iSkn152asdpYRcN-USU
     const doc = parser.parseFromString(html, 'text/html');
     const elements = doc.querySelectorAll('.c0');
     const container = document.getElementById('mainDiv');
-    container.innerHTML = '';
+
+
+    if(elements.length === 0){
+        document.getElementById("info").innerHTML = "No tests!"
+    }else{
+        container.innerHTML = '';
+    }
 
     elements.forEach(element => {
         const text = element.textContent
