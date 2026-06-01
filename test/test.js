@@ -19,7 +19,9 @@ fetch('https://docs.google.com/document/d/1sElbGbpXAX1VjE1Yi-iSkn152asdpYRcN-USU
     elements.forEach(element => {
         const text = element.textContent
         const parts = text.split(';').map(p => p.trim());
+        console.log(parts)
         if (parts.length < 3) return;
+        console.log("pased thru")
         const date = parts[0]
         if (!/^\d{1,2}\.\d{1,2}\.\d{4}$/.test(date)) return;
 
