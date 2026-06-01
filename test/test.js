@@ -6,11 +6,14 @@ fetch('https://docs.google.com/document/d/1sElbGbpXAX1VjE1Yi-iSkn152asdpYRcN-USU
     const elements = doc.querySelectorAll('span');
     const container = document.getElementById('mainDiv');
 
+    console.log(elements.length)
 
     if(elements.length === 1){
         document.getElementById("info").innerHTML = "No tests!"
+        console.log("There is only title!")
     }else{
         container.innerHTML = '';
+        console.log("there is more then a title -.-")
     }
 
     elements.forEach(element => {
