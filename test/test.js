@@ -11,17 +11,12 @@ fetch('https://docs.google.com/document/d/1sElbGbpXAX1VjE1Yi-iSkn152asdpYRcN-USU
       if (!/^\d{1,2}\.\d{1,2}\.\d{4}$/.test(date)) return false;
       return !isExpired(date);
     });
-    
     const container = document.getElementById('mainDiv');
-    
-    console.log(elements.length);
     
     if (validElements.length === 0) {
       document.getElementById("info").innerHTML = "No tests!";
-      console.log("No valid tests found");
     } else {
       container.innerHTML = '';
-      console.log("Displaying " + validElements.length + " test(s)");
     }
 
     validElements.forEach(element => {
