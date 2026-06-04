@@ -99,8 +99,8 @@ function updateTimers() {
 }
 
 function isDateInRanges(date, ranges) {
-    const iso = date.toISOString().split("T")[0];
-    return ranges.some(([start, end]) => iso >= start && iso <= end);
+    const localDate = date.toLocaleDateString('en-CA');
+    return ranges.some(([start, end]) => localDate >= start && localDate <= end);
 }
 
 function isSpecialDay(date) {
