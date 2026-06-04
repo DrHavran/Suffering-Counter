@@ -1,0 +1,55 @@
+{
+  "Pondělí": [
+    { "subject": "Video", "start": 1, "duration": 3 },
+    { "subject": "Praktické", "start": 4, "duration": 2 },
+    { "subject": "Oběd", "start": 6, "duration": 1 },
+    { "subject": "Weby", "start": 7, "duration": 2 },
+    { "subject": "Manažerské", "start": 9, "duration": 1 }
+  ],
+  "Úterý": [
+    { "subject": "Seminář", "start": 1, "duration": 2 },
+    { "subject": "OPS", "start": 3, "duration": 2 },
+    { "subject": "Tělocvik", "start": 5, "duration": 2 },
+    { "subject": "Oběd", "start": 7, "duration": 1 },
+    { "subject": "Sítě", "start": 8, "duration": 2 }
+  ],
+  "Středa": [
+    { "subject": "Angličtina", "start": 1, "duration": 2 },
+    { "subject": "Matika", "start": 3, "duration": 2 },
+    { "subject": "Hardware", "start": 5, "duration": 2 }
+  ],
+  "Čtvrtek": [
+    { "subject": "Matika", "start": 1, "duration": 2 },
+    { "subject": "Angličtina", "start": 3, "duration": 2 },
+    { "subject": "Čeština", "start": 5, "duration": 1 },
+    { "subject": "Oběd", "start": 6, "duration": 1 },
+    { "subject": "Občanka", "start": 7, "duration": 1 },
+    { "subject": "Fyzika", "start": 8, "duration": 1 }
+  ],
+  "Pátek": [
+    { "subject": "Seminář", "start": 1, "duration": 2 },
+    { "subject": "Programování", "start": 3, "duration": 2 },
+    { "subject": "Fyzika", "start": 5, "duration": 1 },
+    { "subject": "Čeština", "start": 6, "duration": 1 }
+  ],
+  "timeMapping": {
+    "1": "8:30",
+    "2": "9:25",
+    "3": "10:30",
+    "4": "11:25",
+    "5": "12:20",
+    "6": "13:15",
+    "7": "14:05",
+    "8": "14:55",
+    "9": "14:55"
+  },
+  "dayMapping": {
+    "0": "Neděle",
+    "1": "Pondělí",
+    "2": "Úterý",
+    "3": "Středa",
+    "4": "Čtvrtek",
+    "5": "Pátek",
+    "6": "Sobota"
+  }
+}

@@ -22,6 +22,9 @@ I’m considering switching the holidays to a Google Doc too, or maybe finding a
 Will probably be adding more functions over time whenever I feel like it.
 Feel free to reach out and suggest improvements or new things to add!
 
+Version 3.0.0:
+    Add a new page tracking progress in current day, with this move the schedule into a seperate file that will be fetched -> with this change, also refactor the way the home page gets its data to fetch from the
+    new file 
 
 ## Important
 
