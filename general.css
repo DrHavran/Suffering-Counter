@@ -1,0 +1,85 @@
+html {
+    overflow-y: scroll;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overscroll-behavior: none;
+}
+
+/* ---------- HEADER ---------- */
+header {
+    width: 100%;
+    background-color: #2c2c2c;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+header a {
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 12px 30px;
+    transition: 0.2s;
+    border-bottom: 3px solid transparent;
+}
+
+header a:hover {
+    background-color: #3a3a3a;
+    border-bottom-color: #ff4d4d;
+    color: white;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+    margin-top: auto;
+    padding: 20px 0;
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+}
+
+footer p {
+    margin: 0;
+    color: #ccc;
+}
+
+footer a {
+    color: #ffaaaa;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+}
+
+footer a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* GitHub icon image (PNG) */
+.github-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+    filter: brightness(0) invert(1);
+}
+
+.hidde {
+    visibility: hidden;
+    height: 0px;
+}
