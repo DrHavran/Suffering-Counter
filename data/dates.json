@@ -1,0 +1,51 @@
+{
+    "endOfYear": "2027-06-30T23:59:59",
+    "endOfSchool": "2027-06-30T14:00:00",
+
+    "schoolEvents": [],
+
+    "daysOff": [],
+
+    "publicHolidays": [
+        {
+            "date": "2026-10-28",
+            "name": "Den vzniku samostatného československého státu"
+        },
+        {
+            "date": "2026-11-17",
+            "name": "Den boje za svobodu a demokracii a Mezinárodní den studentstva"
+        },
+        {
+            "date": "2026-12-24",
+            "name": "Štědrý den"
+        },
+        {
+            "date": "2026-12-25",
+            "name": "1. svátek vánoční"
+        },
+        {
+            "date": "2026-12-26",
+            "name": "2. svátek vánoční"
+        },
+        {
+            "date": "2027-01-01",
+            "name": "Den obnovy samostatného českého státu / Nový rok"
+        },
+        {
+            "date": "2027-04-02",
+            "name": "Velký pátek"
+        },
+        {
+            "date": "2027-04-05",
+            "name": "Velikonoční pondělí"
+        },
+        {
+            "date": "2027-05-01",
+            "name": "Svátek práce"
+        },
+        {
+            "date": "2027-05-08",
+            "name": "Den vítězství"
+        }
+    ]
+}

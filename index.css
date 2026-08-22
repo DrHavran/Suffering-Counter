@@ -1,160 +1,272 @@
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f5f5f5;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    overflow-x: hidden;
-}
-
 /* ---------- HEADINGS ---------- */
+
 h2 {
     color: #525252;
-    margin-bottom: -15px;
+    margin-bottom: 20px;
 }
 
-/* ---------- TIMERS (common styles) ---------- */
-#timer,
-#timerLong {
+
+/* ---------- TIMERS ---------- */
+
+#year-countdown,
+#school-countdown {
     padding: 5px 30px 0 30px;
     font-size: 2rem;
     font-weight: bold;
     margin: 5px 0 15px 0;
 }
-#timer {
+
+#year-countdown {
     color: #ff4d4d;
 }
-#timerLong {
+
+#school-countdown {
     color: #9e1b8a;
 }
 
+
 /* ---------- INFO PARAGRAPHS ---------- */
+
 #daysInSchool,
-#hours,
-#totalDays {
+#school-days,
+#school-hours,
+#total-days {
+    text-align: center;
     font-size: 1.2rem;
     color: #333;
 }
-#daysInSchool {
+
+#school-days {
     margin-bottom: 2px;
 }
-#totalDays {
+
+#total-days {
     margin-bottom: 2px;
 }
-#hours {
+
+#school-hours {
     margin-bottom: 10px;
 }
 
-/* ---------- SUBJECT GRID ---------- */
-#specificClasses {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 12px;
-    width: 100%;
-    max-width: 900px;
-}
 
-#specificClasses > p {
-    background: #fff;
-    padding: 15px;
-    border-radius: 12px;
-    text-align: center;
-    font-weight: 600;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
-    transition: transform 0.2s, box-shadow 0.2s;
+/* ---------- REMAINING HOURS ---------- */
+
+#remaining-hours {
+    width: 100%;
+
     display: flex;
     flex-direction: column;
+    align-items: center;
+
+    margin-bottom: 50px;
+}
+
+#remaining-hours h2 {
+    margin-bottom: 20px;
+}
+
+
+/* ---------- SUBJECT GRID ---------- */
+
+#subject-hours {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+
+    width: 100%;
+    max-width: 850px;
+}
+
+
+/* ---------- SUBJECT BOXES ---------- */
+
+.subject-card {
+    background: #fff;
+
+    padding: 10px;
+    margin: 0;
+
+    min-height: 45px;
+
+    border-radius: 10px;
+
+    text-align: center;
+    font-weight: 600;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.12);
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+
+    display: flex;
+    flex-direction: column;
+
     justify-content: center;
     align-items: center;
+
     position: relative;
 }
 
-#specificClasses p::before {
-    content: attr(id);
+
+/* ---------- SUBJECT NAME ---------- */
+
+.subject-name {
     font-size: 0.9rem;
     font-weight: 700;
-    color: #555;
-    margin-bottom: 5px;
-    text-transform: capitalize;
+
+    color: #525252;
+
+    margin-bottom: 4px;
 }
 
-#specificClasses > p:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.18);
+
+/* ---------- SUBJECT HOURS ---------- */
+
+.subject-hours {
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    color: #333;
 }
+
+
+/* ---------- SUBJECT HOVER ---------- */
+
+.subject-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 6px 12px rgba(0, 0, 0, 0.18);
+}
+
 
 /* ---------- BUTTON ---------- */
+
 button {
     margin-top: 3ex;
+
     background-color: #ff4d4d;
     color: #fff;
+
     font-weight: bold;
     font-size: 1rem;
+
     padding: 10px 20px;
+
     border: none;
     border-radius: 12px;
+
     cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+
+    box-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.15);
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s,
+        background-color 0.2s;
 }
 
 button:hover {
     background-color: #e04343;
+
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+
+    box-shadow:
+        0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 button:active {
     transform: translateY(1px);
-    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+
+    box-shadow:
+        0 3px 6px rgba(0, 0, 0, 0.15);
 }
 
+
 /* ---------- CURRENT DAY INDICATOR ---------- */
+
 #current {
     margin-bottom: 50px;
     margin-top: 10px;
+
     font-weight: 600;
     font-size: 1rem;
+
     color: #555;
     background-color: #f0f0f0;
+
     padding: 6px 12px;
+
     border-radius: 8px;
+
     display: inline-block;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: background-color 0.2s, color 0.2s;
+
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.1);
+
+    transition:
+        background-color 0.2s,
+        color 0.2s;
 }
 
 #current:hover {
     background-color: #e8e8e8;
 }
 
+
 /* ---------- TIMER CONTAINER ---------- */
-.down {
+
+.countdown {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#timers {
+#countdowns {
     background: #fff;
+
     padding: 15px;
+
     border-radius: 12px;
+
     text-align: center;
     font-weight: 600;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.12);
+
     display: flex;
     justify-content: space-between;
 }
 
-/* Mobile: stack timers vertically & stretch full width */
+
+/* ---------- FOOTER SPACING ---------- */
+
+main {
+    padding-bottom: 40px;
+}
+
+
+/* ---------- MOBILE ---------- */
+
 @media (max-width: 610px) {
-    #timers {
+
+    #countdowns {
         flex-direction: column;
         gap: 15px;
     }
-    #timers .down {
+
+    #countdowns .countdown {
         width: 100%;
+    }
+
+    #subject-hours {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
     }
 }

@@ -1,7 +1,7 @@
 # Suffering Counter
 
 Just a really simple project that counts how much time I have wasted.
-It first began as a simple joke, but I slowly started expanding on it, adding test tracking, more data points, etc... Mostly just for fun, but also to learn and experiment with web dev.
+It first began as a simple joke, but I slowly started expanding on it, adding test tracking, more data points, etc... Mostly just for fun, but also to experiment with web dev.
 
 Also, I really just wanted to use GitHub free hosting xD
 
@@ -14,18 +14,17 @@ I originally used an API to fetch Czech holidays, but for some reason it wasn’
 Tests are fetched from a public Google document because I didn’t want to push a text file every time something changes.
 I’m considering switching the holidays to a Google Doc too, or maybe finding a better method because this kinda sucks, but it works, so who cares.
 
-( Some of it is AI slop xD, dont look in the .css files )
-
 
 ## Future
 
 Will probably be adding more functions over time whenever I feel like it.
+
 Feel free to reach out and suggest improvements or new things to add!
 
 Version 3.0.0:
-    Add a new page tracking progress in current day, with this move the schedule into a seperate file that will be fetched -> with this change, also refactor the way the home page gets its data to fetch from the
-    new file 
 
-## Important
-
-Kodytek je žid
+- Add a new **Today** page showing progress through the current school day.
+- Move the school schedule into a separate `schedule.json` file fetched by the website.
+- Refactor the **Home** page to use the new schedule file.
+- Add a **Tests** page fetching tests directly from Google Docs.
+- Improve the styling and layout of the new pages.

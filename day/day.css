@@ -1,101 +1,239 @@
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f5f5f5;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    overflow-x: hidden;
-    margin: 0;
-    padding: 0 20px;
-}
+/* ---------- PAGE ---------- */
 
-h1#today {
-    color: #2c2c2c;
-    text-align: center;
-    margin-bottom: 10px;
-    font-size: 2rem;
-}
-
-h2#currentClass {
+#today {
     color: #525252;
+
     text-align: center;
-    font-size: 1.4rem;
-    margin: 10px 0 5px;
+
+    margin: 20px 0 10px 0;
+}
+
+#currentClass {
+    color: #ff4d4d;
+
+    text-align: center;
+
+    margin: 5px 0;
 }
 
 #timer {
+    color: #ff4d4d;
+
     font-size: 2rem;
     font-weight: bold;
-    color: #ff4d4d;
+
     text-align: center;
-    margin: 5px 0 25px;
-    padding: 5px 30px;
+
+    margin: 5px 0 25px 0;
 }
 
-#diagram {
-    display: flex;
-    width: 70%;
-    height: 40px;
-    margin: 20px auto;
-    border-radius: 20px;
-    overflow: hidden;
-    background-color: #e0e0e0;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2), 0 2px 4px rgba(0,0,0,0.1);
-}
+#school-end-timer {
+    color: #525252;
 
-#diagram > div {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
+    font-size: 1.1rem;
     font-weight: 600;
-    color: #1e1e1e;
-    text-shadow: 0 1px 0 rgba(255,255,255,0.6);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    transition: filter 0.2s;
-    border-right: 1px solid rgba(0,0,0,0.1);
+
+    text-align: center;
+
+    margin-top: 15px;
 }
 
-#diagram > div:last-child {
-    border-right: none;
+#day-percentage {
+    color: #777;
+
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    text-align: center;
+
+    margin-top: 5px;
 }
 
-/* Diagram container needs relative positioning for the line */
+
+/* ---------- DIAGRAM ---------- */
+
 #diagram {
     position: relative;
+
+    width: fit-content;
+    max-width: 95%;
+
+    min-height: 70px;
+
+    display: grid;
+
+    gap: 6px;
+
+    margin: 0 auto 50px auto;
+    padding: 10px;
+
+    box-sizing: border-box;
+
+    background: #e8e8e8;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.12);
+
+    overflow: hidden;
 }
 
-/* Vertical line indicator */
+
+/* ---------- SUBJECT BLOCKS ---------- */
+
+.subject-block {
+    position: relative;
+
+    width: auto;
+    min-width: 0;
+    min-height: 50px;
+
+    padding: 8px;
+
+    box-sizing: border-box;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    font-weight: 700;
+    font-size: 0.9rem;
+
+    color: #333;
+
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.12);
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+.subject-block:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 5px 10px rgba(0, 0, 0, 0.18);
+}
+
+
+/* ---------- SUBJECT COLORS ---------- */
+
+.subject-block[data-subject="Video"] {
+    background-color: #ffb3b3;
+}
+
+.subject-block[data-subject="Praktické"] {
+    background-color: #ffcc99;
+}
+
+.subject-block[data-subject="Weby"] {
+    background-color: #b3d9ff;
+}
+
+.subject-block[data-subject="Manažerské"] {
+    background-color: #d9b3ff;
+}
+
+.subject-block[data-subject="Seminář"] {
+    background-color: #b3e6cc;
+}
+
+.subject-block[data-subject="OPS"] {
+    background-color: #99ccff;
+}
+
+.subject-block[data-subject="Tělocvik"] {
+    background-color: #ffcc66;
+}
+
+.subject-block[data-subject="Sítě"] {
+    background-color: #99e6e6;
+}
+
+.subject-block[data-subject="Angličtina"] {
+    background-color: #c2b3ff;
+}
+
+.subject-block[data-subject="Matika"] {
+    background-color: #ff9999;
+}
+
+.subject-block[data-subject="Hardware"] {
+    background-color: #b3b3b3;
+}
+
+.subject-block[data-subject="Čeština"] {
+    background-color: #ffb366;
+}
+
+.subject-block[data-subject="Občanka"] {
+    background-color: #d9b3b3;
+}
+
+.subject-block[data-subject="Fyzika"] {
+    background-color: #99cc99;
+}
+
+.subject-block[data-subject="Programování"] {
+    background-color: #66b3ff;
+}
+
+
+/* ---------- PROGRESS INDICATOR ---------- */
+
 #timeIndicator {
     position: absolute;
+
     top: 0;
-    left: 0;
+    bottom: 0;
+
     width: 3px;
-    height: 100%;
+
     background-color: #ff4d4d;
-    pointer-events: none; /* so it doesn't block clicks */
-    z-index: 2;
-    box-shadow: 0 0 2px rgba(0,0,0,0.3);
-    transition: left 0.2s linear;
+
+    border-radius: 3px;
+
+    z-index: 10;
+
+    pointer-events: none;
+
+    box-shadow:
+        0 0 5px rgba(255, 77, 77, 0.5);
+
+    transition: left 0.5s linear;
 }
 
-/* Subject colors */
-#Video { background-color: #FFB3BA; }  
-#Praktické { background-color: #B5EAD7; } 
-#Weby { background-color: #FFDFBF; }
-#Manažerské { background-color: #C7CEEA; } 
-#Seminář { background-color: #F4C3F7; } 
-#OPS { background-color: #9AD0F5; }  
-#Tělocvik { background-color: #F5CCA6; } 
-#Sítě { background-color: #D4E2D4; }       
-#Angličtina { background-color: #A8D5FF; }  
-#Matika { background-color: #FFB3BA; }    
-#Hardware { background-color: #D9C2A7; } 
-#Čeština { background-color: #A2D9CE; }  
-#Občanka { background-color: #E6C8A0; }   
-#Fyzika { background-color: #B8D0E6; } 
-#Programování { background-color: #C0E0D9; }
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 700px) {
+
+    #diagram {
+        max-width: 95%;
+    }
+
+    .subject-block {
+        font-size: 0.85rem;
+        padding: 6px;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    #diagram {
+        max-width: 95%;
+    }
+
+    .subject-block {
+        font-size: 0.8rem;
+        padding: 5px;
+    }
+}

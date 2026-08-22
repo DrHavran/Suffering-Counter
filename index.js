@@ -1,112 +1,249 @@
-const endOfYearDate = new Date("2026-06-27T00:00:00").getTime();
-const endOfSchoolDate = new Date("2028-07-01T00:00:00").getTime();
+import { dayMapping } from "../shared modules/config.js";
+import { getData } from "../shared modules/api.js";
 
-const weeklySchedule = {
-    Angličtina: { wednesday: 2, thursday: 2 },
-    Čeština: { thursday: 1, friday: 1 },
-    Fyzika: { thursday: 1, friday: 1 },
-    Hardware: { wednesday: 2 },
-    Seminář: { tuesday: 2 },
-    Matika: { wednesday: 2, thursday: 2 },
-    Manažerské: { monday: 1 },
-    Sítě: { tuesday: 2 },
-    OPS: { tuesday: 2 },
-    Občanka: { thursday: 1 },
-    Praktické: { monday: 2 },
-    Programování: { friday: 2 },
-    Tělocvik: { tuesday: 2 },
-    Weby: { monday: 2 },
-    Video: { monday: 3 }
-};
+const [dates, schedule] = await Promise.all([
+    getData("dates.json"),
+    getData("schedule.json")
+]);
 
-const specialPeriods = [
-    ["2026-05-18", "2026-05-22"], // kozárky
-    ["2026-06-08", "2026-06-12"], // praxe
-    ["2026-06-15", "2026-06-19"], // praxe
-    ["2026-06-22", "2026-06-26"], // last week
-];
+const schoolEvents = dates.schoolEvents;
+const daysOff = dates.daysOff;
+const publicHolidays = dates.publicHolidays;
 
-const daysNotInSchool = [];
+initialize();
 
-updateTimers();
-setInterval(updateTimers, 1000);
-
-let seminarOnTuesday = true;
-
-function switchDays() {
-    if (seminarOnTuesday) {
-        delete weeklySchedule["Seminář"].tuesday;
-        weeklySchedule["Seminář"].friday = 2;
-        document.getElementById("current").textContent = "Currently: Pátek";
-    } else {
-        delete weeklySchedule["Seminář"].friday;
-        weeklySchedule["Seminář"].tuesday = 2;
-        document.getElementById("current").textContent = "Currently: Úterý";
-    }
-    seminarOnTuesday = !seminarOnTuesday;
-    updateTimers();
+function initialize() {
+    updatePage();
+    setInterval(updatePage, 1000);
 }
 
-function formatTimeRemaining(ms) {
-    const days = Math.floor(ms / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((ms / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((ms / (1000 * 60)) % 60);
-    const seconds = Math.floor((ms / 1000) % 60);
+
+/* ---------- PAGE UPDATE ---------- */
+
+function updatePage() {
+    const now = new Date();
+
+    updateCountdowns(now);
+    updateSchoolSummary(now);
+    updateSubjectHours(now);
+}
+
+
+/* ---------- COUNTDOWNS ---------- */
+
+function updateCountdowns(now) {
+    const endOfYear = new Date(dates.endOfYear);
+    const endOfSchool = new Date(dates.endOfSchool);
+
+    document.getElementById("year-countdown").textContent =
+        formatTimeRemaining(endOfYear - now);
+
+    document.getElementById("school-countdown").textContent =
+        formatTimeRemaining(endOfSchool - now);
+}
+
+function formatTimeRemaining(milliseconds) {
+    const days = Math.floor(
+        milliseconds / (1000 * 60 * 60 * 24)
+    );
+
+    const hours = Math.floor(
+        (milliseconds / (1000 * 60 * 60)) % 24
+    );
+
+    const minutes = Math.floor(
+        (milliseconds / (1000 * 60)) % 60
+    );
+
+    const seconds = Math.floor(
+        (milliseconds / 1000) % 60
+    );
+
     return `${days}d ${hours}h ${minutes}m ${seconds}s`;
 }
 
-function countDays(start, end, excludePredicate) {
-    const days = [];
-    let d = new Date(start);
-    while (d < end) {
-        const day = d.getDay();
-        if (day !== 0 && day !== 6 && !excludePredicate(d)) {
-            days.push(new Date(d));
-        }
-        d.setDate(d.getDate() + 1);
+
+/* ---------- SCHOOL SUMMARY ---------- */
+
+function updateSchoolSummary(now) {
+    const endOfYear = new Date(dates.endOfYear);
+
+    const schoolDays = getSchoolDays(
+        now,
+        endOfYear,
+        isSpecialDay
+    );
+
+    const totalDays = getSchoolDays(
+        now,
+        endOfYear,
+        isTotal
+    );
+
+    document.getElementById("school-days").innerHTML =
+        `<b>${schoolDays.length}</b> days in school left`;
+
+    document.getElementById("total-days").innerHTML =
+        `<b>${totalDays.length}</b> total days left`;
+}
+
+
+/* ---------- SUBJECT HOURS ---------- */
+
+function updateSubjectHours(now) {
+    const endOfYear = new Date(dates.endOfYear);
+
+    const schoolDays = getSchoolDays(
+        now,
+        endOfYear,
+        isSpecialDay
+    );
+
+    const subjectContainer =
+        document.getElementById("subject-hours");
+
+    subjectContainer.innerHTML = "";
+
+    const subjects = getSubjects();
+
+    let totalHours = 0;
+
+    for (const subject of subjects) {
+        const hours = countSubjectLessons(
+            subject,
+            schoolDays
+        );
+
+        totalHours += hours;
+
+        const subjectBox = createSubjectBox(
+            subject,
+            hours
+        );
+
+        subjectContainer.appendChild(subjectBox);
     }
+
+    document.getElementById("school-hours").innerHTML =
+        `<b>${totalHours}</b> school hours left`;
+}
+
+
+/* ---------- SUBJECTS ---------- */
+
+function getSubjects() {
+    const subjects = new Set();
+
+    for (const day in schedule) {
+        for (const lesson of schedule[day]) {
+            subjects.add(lesson.subject);
+        }
+    }
+
+    return [...subjects];
+}
+
+
+/* ---------- LESSON COUNTING ---------- */
+
+function countSubjectLessons(subject, schoolDays) {
+    let total = 0;
+
+    for (const date of schoolDays) {
+        const dayName = dayMapping[date.getDay()];
+        const lessons = schedule[dayName] ?? [];
+
+        for (const lesson of lessons) {
+            if (lesson.subject === subject) {
+                total++;
+            }
+        }
+    }
+
+    return total;
+}
+
+
+/* ---------- SUBJECT BOX ---------- */
+
+function createSubjectBox(subject, hours) {
+    const box = document.createElement("div");
+    box.className = "subject-card";
+
+    const name = document.createElement("span");
+    name.className = "subject-name";
+    name.textContent = subject;
+
+    const hourText = document.createElement("span");
+    hourText.className = "subject-hours";
+    hourText.textContent = `${hours} hodin`;
+
+    box.appendChild(name);
+    box.appendChild(hourText);
+
+    return box;
+}
+
+
+/* ---------- SCHOOL DAYS ---------- */
+
+function getSchoolDays(start, end, excludePredicate) {
+    const days = [];
+    const date = new Date(start);
+
+    while (date < end) {
+        const day = date.getDay();
+
+        const isWeekend =
+            day === 0 || day === 6;
+
+        if (
+            !isWeekend &&
+            !excludePredicate(date)
+        ) {
+            days.push(new Date(date));
+        }
+
+        date.setDate(date.getDate() + 1);
+    }
+
     return days;
 }
 
-function updateTimers() {
-    const now = new Date();
 
-    // time till end of the year
-    document.getElementById("timer").textContent = formatTimeRemaining(endOfYearDate - now);
-
-    // time till čtvrťák
-    document.getElementById("timerLong").textContent = formatTimeRemaining(endOfSchoolDate - now);
-
-    const daysInSchool = countDays(now, new Date(endOfYearDate), isSpecialDay);
-    document.getElementById("daysInSchool").innerHTML = `<b>${daysInSchool.length}</b> days in school left`;
-
-    const totalDays = countDays(now, new Date(endOfYearDate), isTotal);
-    document.getElementById("totalDays").innerHTML = `<b>${totalDays.length}</b> total days left`;
-
-    let totalHours = 0;
-    for (const subject in weeklySchedule) {
-        let total = 0;
-        for (const day of daysInSchool) {
-            const dayName = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"][day.getDay()];
-            if (weeklySchedule[subject][dayName]) {
-                total += weeklySchedule[subject][dayName];
-            }
-        }
-        totalHours += total;
-        document.getElementById(subject).innerHTML = `${total} hodin`;
-    }
-    document.getElementById("hours").innerHTML = `<b>${totalHours}</b> school hours left`;
-}
+/* ---------- DATE RANGES ---------- */
 
 function isDateInRanges(date, ranges) {
-    const localDate = date.toLocaleDateString('en-CA');
-    return ranges.some(([start, end]) => localDate >= start && localDate <= end);
+    const localDate =
+        date.toLocaleDateString("en-CA");
+
+    return ranges.some(
+        ([start, end]) =>
+            localDate >= start &&
+            localDate <= end
+    );
+}
+
+function isPublicHoliday(date) {
+    const localDate =
+        date.toLocaleDateString("en-CA");
+
+    return publicHolidays.some(
+        holiday => holiday.date === localDate
+    );
 }
 
 function isSpecialDay(date) {
-    return isDateInRanges(date, specialPeriods) || isDateInRanges(date, daysNotInSchool);
+    return (
+        isDateInRanges(date, schoolEvents) ||
+        isDateInRanges(date, daysOff) ||
+        isPublicHoliday(date)
+    );
 }
 
 function isTotal(date) {
-    return isDateInRanges(date, daysNotInSchool);
+    return (
+        isDateInRanges(date, daysOff) ||
+        isPublicHoliday(date)
+    );
 }

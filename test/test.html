@@ -3,38 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="test.css">
-    <link rel="stylesheet" href="../general.css">
-    <link rel="icon" href="https://cdn3.emoji.gg/emojis/8390-suicide.png" type="image/x-icon">
+    <link rel="stylesheet" href="../shared modules/general.css">
+
+    <link
+        rel="icon"
+        href="https://cdn3.emoji.gg/emojis/8390-suicide.png"
+        type="image/x-icon"
+    >
+
     <title>Tests</title>
 </head>
+
 <body>
-    <header>
-        <a href="https://drhavran.github.io/Suffering-Counter/">Timers</a> 
-        <a href="https://drhavran.github.io/Suffering-Counter/day/day.html">Today</a> 
-        <a href="https://drhavran.github.io/Suffering-Counter/test/test.html">Tests</a> 
-    </header>
-    <header class="hidden">
-        <a href="file:///C:/Users/Havran/Desktop/Code/Suffering-Counter/index.html">Local timers</a>
-        <a href="file:///C:/Users/Havran/Desktop/Code/Suffering-Counter/day/day.html">Local today</a>
-        <a href="file:///C:/Users/Havran/Desktop/Code/Suffering-Counter/test/test.html">Local tests</a>
-    </header>
 
-    <h1>Closest tests</h1>
-    <div id="mainDiv">
-        <h2 id="info">Loading...</h2>
-    </div>
-    <div id="emptySpace"></div>
+    <div id="header"></div>
 
-    <footer>
-        <p>version 3.0.0</p>
-        <a href="https://github.com/DrHavran">
-            <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" class="github-icon"> GitHub
-        </a>
-        <a href="https://github.com/DrHavran/Suffering-Counter">
-            <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" class="github-icon"> GitHub page
-        </a>
-    </footer>
-    <script src="test.js"></script>
+    <main>
+        <h1>Closest tests</h1>
+
+        <section id="tests">
+            <h2 id="info">Loading...</h2>
+        </section>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="../shared modules/header.js"></script>
+    <script src="../shared modules/footer.js"></script>
+    <script type="module" src="test.js"></script>
+
 </body>
 </html>

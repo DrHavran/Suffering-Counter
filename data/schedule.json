@@ -43,14 +43,5 @@
     { "subject": "Programování", "start": "11:25", "end": "12:10" },
     { "subject": "Fyzika", "start": "12:20", "end": "13:05" },
     { "subject": "Čeština", "start": "13:15", "end": "14:00" }
-  ],
-  "dayMapping": {
-    "0": "Neděle",
-    "1": "Pondělí",
-    "2": "Úterý",
-    "3": "Středa",
-    "4": "Čtvrtek",
-    "5": "Pátek",
-    "6": "Sobota"
-  }
+  ]
 }
