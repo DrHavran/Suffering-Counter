@@ -32,7 +32,10 @@ function updatePage() {
 /* ---------- COUNTDOWNS ---------- */
 
 function updateCountdowns(now) {
+    const startOfYear = new Date(dates.startOfYear);
     const endOfYear = new Date(dates.endOfYear);
+
+    const startOfSchool = new Date(dates.startOfSchool);
     const endOfSchool = new Date(dates.endOfSchool);
 
     document.getElementById("year-countdown").textContent =
@@ -40,6 +43,12 @@ function updateCountdowns(now) {
 
     document.getElementById("school-countdown").textContent =
         formatTimeRemaining(endOfSchool - now);
+
+    document.getElementById("year-progress").textContent =
+        `${calculateProgress(startOfYear, endOfYear, now)}%`;
+
+    document.getElementById("school-progress").textContent =
+        `${calculateProgress(startOfSchool, endOfSchool, now)}%`;
 }
 
 function formatTimeRemaining(milliseconds) {
@@ -60,6 +69,18 @@ function formatTimeRemaining(milliseconds) {
     );
 
     return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
+
+function calculateProgress(start, end, now) {
+    const total = end - start;
+    const elapsed = now - start;
+
+    const progress = (elapsed / total) * 100;
+
+    return Math.min(
+        100,
+        Math.max(0, progress)
+    ).toFixed(2);
 }
 
 

@@ -11,9 +11,15 @@ h2 {
 #year-countdown,
 #school-countdown {
     padding: 5px 30px 0 30px;
+
     font-size: 2rem;
     font-weight: bold;
-    margin: 5px 0 15px 0;
+
+    margin: 5px 0 5px 0;
+}
+
+.countdown h2 {
+    margin-bottom: 5px;
 }
 
 #year-countdown {
@@ -22,6 +28,21 @@ h2 {
 
 #school-countdown {
     color: #9e1b8a;
+}
+
+
+/* ---------- PROGRESS ---------- */
+
+#year-progress,
+#school-progress {
+    color: #777;
+
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    text-align: center;
+
+    margin: 5px 0 10px 0;
 }
 
 

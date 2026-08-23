@@ -12,7 +12,6 @@ The project is really simple. Stuff like holidays is currently hardcoded in (mig
 I originally used an API to fetch Czech holidays, but for some reason it wasn’t working, so I just hardcoded everything instead :]
 
 Tests are fetched from a public Google document because I didn’t want to push a text file every time something changes.
-I’m considering switching the holidays to a Google Doc too, or maybe finding a better method because this kinda sucks, but it works, so who cares.
 
 
 ## Future
@@ -24,7 +23,5 @@ Feel free to reach out and suggest improvements or new things to add!
 Version 3.0.0:
 
 - Add a new **Today** page showing progress through the current school day.
-- Move the school schedule into a separate `schedule.json` file fetched by the website.
-- Refactor the **Home** page to use the new schedule file.
-- Add a **Tests** page fetching tests directly from Google Docs.
+- Moved the data into a separate files fetched by the website.
 - Improve the styling and layout of the new pages.

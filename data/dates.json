@@ -1,8 +1,12 @@
 {
-    "endOfYear": "2027-06-30T23:59:59",
-    "endOfSchool": "2027-06-30T14:00:00",
+    "endOfYear": "2027-07-01T00:00:00",
+    "startOfYear": "2026-09-01T00:00:00",
+    "endOfSchool": "2028-07-01T00:00:00",
+    "startOfSchool": "2024-09-01T00:00:00",
 
-    "schoolEvents": [],
+    "schoolEvents": [
+        ["2026-09-01", "2026-09-04"]
+    ],
 
     "daysOff": [],
 
