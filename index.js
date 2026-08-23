@@ -1,5 +1,5 @@
-import { dayMapping } from "../shared modules/config.js";
-import { getData } from "../shared modules/api.js";
+import { dayMapping } from "./shared-modules/config.js";
+import { getData } from "./shared-modules/api.js";
 
 const [dates, schedule] = await Promise.all([
     getData("dates.json"),

@@ -1,5 +1,5 @@
-import { getData } from "../shared modules/api.js";
-import { dayMapping } from "../shared modules/config.js";
+import { getData } from "../shared-modules/api.js";
+import { dayMapping } from "../shared-modules/config.js";
 
 
 const data = await getData("schedule.json");

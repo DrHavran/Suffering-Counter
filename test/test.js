@@ -1,4 +1,4 @@
-import { getTests } from "../shared modules/api.js";
+import { getTests } from "../shared-modules/api.js";
 
 const tests = await getTests();
 
