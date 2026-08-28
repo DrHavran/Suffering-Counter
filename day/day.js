@@ -2,7 +2,10 @@ import { getData } from "../shared-modules/api.js";
 import { dayMapping } from "../shared-modules/config.js";
 
 
-const data = await getData("schedule.json");
+const [dates, fullSchedule] = await Promise.all([
+    getData("dates.json"),
+    getData("schedule.json")
+]);
 
 
 // ---------- DATE ----------
@@ -14,7 +17,7 @@ const currentTime = new Date();
 
 const dayIndex = currentTime.getDay();
 const dayName = dayMapping[dayIndex];
-const schedule = data[dayName];
+const schedule = fullSchedule[dayName];
 
 document.getElementById("today").textContent =
     "Dneska je " + dayName;
@@ -38,23 +41,51 @@ const dayPercentage =
     document.getElementById("day-percentage");
 
 
-// ---------- WEEKEND ----------
+// ---------- SCHOOL DAY CHECK ----------
 
-if (!schedule || schedule.length === 0) {
+function isSchoolDay(date) {
+    const dateStr = date.toLocaleDateString("en-CA");
 
-    currentClassElement.textContent =
-        "Víkend";
+    // Outside school year?
+    if (dateStr < dates.startOfYear || dateStr > dates.endOfYear) return false;
+
+    // Weekend?
+    const day = date.getDay();
+    if (day === 0 || day === 6) return false;
+
+    // Days off (range check)
+    for (const off of dates.daysOff) {
+        if (dateStr >= off.start && dateStr <= off.end) return false;
+    }
+
+    // Public holidays (exact match)
+    for (const holiday of dates.publicHolidays) {
+        if (dateStr === holiday.date) return false;
+    }
+
+    return true;
+}
+
+const schoolDay = isSchoolDay(currentTime);
+
+
+// ---------- NOT A SCHOOL DAY ----------
+
+if (!schoolDay) {
+
+    currentClassElement.textContent = "Mimo školu";
 
     timerElement.textContent = "";
 
-    diagram.style.display =
-        "none";
+    diagram.style.display = "none";
 
-    schoolEndTimer.style.display =
-        "none";
+    schoolEndTimer.style.display = "none";
 
-    dayPercentage.style.display =
-        "none";
+    dayPercentage.style.display = "none";
+
+    // Hide the moving indicator if it exists
+    const indicator = document.getElementById("timeIndicator");
+    if (indicator) indicator.style.display = "none";
 
 } else {
 
@@ -586,7 +617,7 @@ if (!schedule || schedule.length === 0) {
         if (!currentClass) {
 
             currentClassElement.textContent =
-                "Mimo školy";
+                "Mimo školu";
 
             timerElement.textContent = "";
 
