@@ -5,10 +5,60 @@
     "startOfSchool": "2024-09-01T00:00:00",
 
     "schoolEvents": [
-        ["2026-09-01", "2026-09-04"]
+        {
+            "start": "2026-09-01",
+            "end": "2026-09-04",
+            "name": "Voda"
+        },
+        {
+            "start": "2027-06-07",
+            "end": "2027-06-18",
+            "name": "odborná praxe C3"
+        }
     ],
 
-    "daysOff": [],
+    "daysOff": [
+        {
+            "start": "2026-10-26",
+            "end": "2026-10-27",
+            "name": "ředitelské volno"
+        },
+        {
+            "start": "2026-10-28",
+            "end": "2026-10-30",
+            "name": "podzimní prázdniny"
+        },
+        {
+            "start": "2026-11-16",
+            "end": "2026-11-16",
+            "name": "ředitelské volno"
+        },
+        {
+            "start": "2026-12-21",
+            "end": "2026-12-22",
+            "name": "ředitelské volno"
+        },
+        {
+            "start": "2026-12-23",
+            "end": "2027-01-03",
+            "name": "vánoční prázdniny"
+        },
+        {
+            "start": "2027-01-29",
+            "end": "2027-01-29",
+            "name": "pololetní prázdniny"
+        },
+        {
+            "start": "2027-02-22",
+            "end": "2027-02-26",
+            "name": "jarní prázdniny"
+        },
+        {
+            "start": "2027-03-25",
+            "end": "2027-03-25",
+            "name": "velikonoční prázdniny"
+        }
+    ],
 
     "publicHolidays": [
         {
