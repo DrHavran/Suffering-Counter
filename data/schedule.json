@@ -32,7 +32,7 @@
   ],
   "Pátek": [
     { "subject": "Tělocvik", "start": "8:30", "end": "9:15" },
-    { "subject": "Telocvik", "start": "9:25", "end": "10:10" },
+    { "subject": "Tělocvik", "start": "9:25", "end": "10:10" },
     { "subject": "Matika", "start": "10:30", "end": "11:15" },
     { "subject": "Matika", "start": "11:25", "end": "12:10" },
     { "subject": "Angličtina", "start": "12:20", "end": "13:05" },
