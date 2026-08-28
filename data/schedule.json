@@ -1,47 +1,41 @@
 {
   "Pondělí": [
-    { "subject": "Video", "start": "8:30", "end": "9:15" },
-    { "subject": "Video", "start": "9:25", "end": "10:10" },
-    { "subject": "Video", "start": "10:30", "end": "11:15" },
-    { "subject": "Praktické", "start": "11:25", "end": "12:10" },
-    { "subject": "Praktické", "start": "12:20", "end": "13:05" },
-    { "subject": "Weby", "start": "14:05", "end": "14:50" },
-    { "subject": "Weby", "start": "14:55", "end": "15:40" },
-    { "subject": "Manažerské", "start": "15:45", "end": "16:30" }
+    { "subject": "Praktické", "start": "8:30", "end": "9:15" },
+    { "subject": "Praktické", "start": "9:25", "end": "10:10" },
+    { "subject": "Matika", "start": "10:30", "end": "11:15" },
+    { "subject": "Hardware", "start": "11:25", "end": "12:10" },
+    { "subject": "Hardware", "start": "12:20", "end": "13:05" },
+    { "subject": "Angličtina", "start": "13:15", "end": "14:00" }
   ],
   "Úterý": [
-    { "subject": "Seminář", "start": "8:30", "end": "9:15" },
-    { "subject": "Seminář", "start": "9:25", "end": "10:10" },
-    { "subject": "OPS", "start": "10:30", "end": "11:15" },
-    { "subject": "OPS", "start": "11:25", "end": "12:10" },
-    { "subject": "Tělocvik", "start": "12:20", "end": "13:05" },
-    { "subject": "Tělocvik", "start": "13:15", "end": "14:00" },
-    { "subject": "Sítě", "start": "14:55", "end": "15:40" },
-    { "subject": "Sítě", "start": "15:45", "end": "16:30" }
-  ],
-  "Středa": [
-    { "subject": "Angličtina", "start": "8:30", "end": "9:15" },
+    { "subject": "Ekonomika", "start": "8:30", "end": "9:15" },
     { "subject": "Angličtina", "start": "9:25", "end": "10:10" },
     { "subject": "Matika", "start": "10:30", "end": "11:15" },
-    { "subject": "Matika", "start": "11:25", "end": "12:10" },
-    { "subject": "Hardware", "start": "12:20", "end": "13:05" },
-    { "subject": "Hardware", "start": "13:15", "end": "14:00" }
+    { "subject": "Fyzika", "start": "11:25", "end": "12:10" },
+    { "subject": "Sítě", "start": "12:20", "end": "13:05" },
+    { "subject": "Sítě", "start": "13:15", "end": "14:00" }
+  ],
+  "Středa": [
+    { "subject": "Fyzika", "start": "8:30", "end": "9:15" },
+    { "subject": "Ekonomika", "start": "9:25", "end": "10:10" },
+    { "subject": "Čeština", "start": "10:30", "end": "11:15" },
+    { "subject": "Čeština", "start": "11:25", "end": "12:10" },
+    { "subject": "Manažerké", "start": "12:20", "end": "13:05" }
   ],
   "Čtvrtek": [
-    { "subject": "Matika", "start": "8:30", "end": "9:15" },
-    { "subject": "Matika", "start": "9:25", "end": "10:10" },
-    { "subject": "Angličtina", "start": "10:30", "end": "11:15" },
-    { "subject": "Angličtina", "start": "11:25", "end": "12:10" },
-    { "subject": "Čeština", "start": "12:20", "end": "13:05" },
-    { "subject": "Občanka", "start": "14:05", "end": "14:50" },
-    { "subject": "Fyzika", "start": "14:55", "end": "15:40" }
+    { "subject": "Programování", "start": "8:30", "end": "9:15" },
+    { "subject": "Programování", "start": "9:25", "end": "10:10" },
+    { "subject": "OPS", "start": "10:30", "end": "11:15" },
+    { "subject": "OPS", "start": "11:25", "end": "12:10" },
+    { "subject": "Databáze", "start": "12:20", "end": "13:05" },
+    { "subject": "Databáze", "start": "13:15", "end": "14:00" }
   ],
   "Pátek": [
-    { "subject": "Seminář", "start": "8:30", "end": "9:15" },
-    { "subject": "Seminář", "start": "9:25", "end": "10:10" },
-    { "subject": "Programování", "start": "10:30", "end": "11:15" },
-    { "subject": "Programování", "start": "11:25", "end": "12:10" },
-    { "subject": "Fyzika", "start": "12:20", "end": "13:05" },
-    { "subject": "Čeština", "start": "13:15", "end": "14:00" }
+    { "subject": "Tělocvik", "start": "8:30", "end": "9:15" },
+    { "subject": "Telocvik", "start": "9:25", "end": "10:10" },
+    { "subject": "Matika", "start": "10:30", "end": "11:15" },
+    { "subject": "Matika", "start": "11:25", "end": "12:10" },
+    { "subject": "Angličtina", "start": "12:20", "end": "13:05" },
+    { "subject": "Angličtina", "start": "13:15", "end": "14:00" }
   ]
 }
