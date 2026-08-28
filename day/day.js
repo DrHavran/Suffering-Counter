@@ -102,7 +102,7 @@ if (!schedule || schedule.length === 0) {
         if (!currentClass) {
 
             currentClassElement.textContent =
-                "Mimo školy";
+                "Mimo školu";
 
             timerElement.textContent = "";
 
