@@ -235,13 +235,10 @@ function getSchoolDays(start, end, excludePredicate) {
 /* ---------- DATE RANGES ---------- */
 
 function isDateInRanges(date, ranges) {
-    const localDate =
-        date.toLocaleDateString("en-CA");
+    const localDate = date.toLocaleDateString("en-CA");
 
     return ranges.some(
-        ([start, end]) =>
-            localDate >= start &&
-            localDate <= end
+        range => localDate >= range.start && localDate <= range.end
     );
 }
 
