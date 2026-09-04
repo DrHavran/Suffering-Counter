@@ -123,8 +123,6 @@ function updateSubjectHours(now) {
     const subjectContainer =
         document.getElementById("subject-hours");
 
-    subjectContainer.innerHTML = "";
-
     const subjects = getSubjects();
 
     let totalHours = 0;
@@ -139,12 +137,24 @@ function updateSubjectHours(now) {
             totalHours += hours;
         }
 
-        const subjectBox = createSubjectBox(
-            subject,
-            hours
-        );
+        let subjectBox =
+            subjectContainer.querySelector(
+                `[data-subject="${CSS.escape(subject)}"]`
+            );
 
-        subjectContainer.appendChild(subjectBox);
+        if (!subjectBox) {
+            subjectBox = createSubjectBox(
+                subject,
+                hours
+            );
+
+            subjectContainer.appendChild(subjectBox);
+        } else {
+            const hourText =
+                subjectBox.querySelector(".subject-hours");
+
+            hourText.textContent = `${hours} hodin`;
+        }
     }
 
     document.getElementById("school-hours").innerHTML =
@@ -192,6 +202,7 @@ function countSubjectLessons(subject, schoolDays) {
 function createSubjectBox(subject, hours) {
     const box = document.createElement("div");
     box.className = "subject-card";
+    box.dataset.subject = subject;
 
     const name = document.createElement("span");
     name.className = "subject-name";
