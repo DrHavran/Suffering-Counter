@@ -5,7 +5,9 @@
     { "subject": "Matika", "start": "10:30", "end": "11:15" },
     { "subject": "Hardware", "start": "11:25", "end": "12:10" },
     { "subject": "Hardware", "start": "12:20", "end": "13:05" },
-    { "subject": "Angličtina", "start": "13:15", "end": "14:00" }
+    { "subject": "Angličtina", "start": "13:15", "end": "14:00" },
+    { "subject": "Seminář #1", "start": "14:55", "end": "15:40" },
+    { "subject": "Seminář #1", "start": "15:45", "end": "16:30" }
   ],
   "Úterý": [
     { "subject": "Ekonomika", "start": "8:30", "end": "9:15" },
@@ -13,7 +15,9 @@
     { "subject": "Matika", "start": "10:30", "end": "11:15" },
     { "subject": "Fyzika", "start": "11:25", "end": "12:10" },
     { "subject": "Sítě", "start": "12:20", "end": "13:05" },
-    { "subject": "Sítě", "start": "13:15", "end": "14:00" }
+    { "subject": "Sítě", "start": "13:15", "end": "14:00" },
+    { "subject": "Seminář #2", "start": "14:55", "end": "15:40" },
+    { "subject": "Seminář #2", "start": "15:45", "end": "16:30" }
   ],
   "Středa": [
     { "subject": "Fyzika", "start": "8:30", "end": "9:15" },
@@ -28,7 +32,9 @@
     { "subject": "OPS", "start": "10:30", "end": "11:15" },
     { "subject": "OPS", "start": "11:25", "end": "12:10" },
     { "subject": "Databáze", "start": "12:20", "end": "13:05" },
-    { "subject": "Databáze", "start": "13:15", "end": "14:00" }
+    { "subject": "Databáze", "start": "13:15", "end": "14:00" },
+    { "subject": "Seminář #3", "start": "14:55", "end": "15:40" },
+    { "subject": "Seminář #3", "start": "15:45", "end": "16:30" }
   ],
   "Pátek": [
     { "subject": "Tělocvik", "start": "8:30", "end": "9:15" },

@@ -58,6 +58,11 @@ function isSchoolDay(date) {
         if (dateStr >= off.start && dateStr <= off.end) return false;
     }
 
+    // School events (range check)
+    for (const off of dates.schoolEvents) {
+        if (dateStr >= off.start && dateStr <= off.end) return false;
+    }
+
     // Public holidays (exact match)
     for (const holiday of dates.publicHolidays) {
         if (dateStr === holiday.date) return false;

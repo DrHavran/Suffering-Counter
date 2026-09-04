@@ -83,6 +83,7 @@
 /* ---------- SUBJECT BLOCKS ---------- */
 
 .subject-block {
+    white-space: nowrap;
     position: relative;
 
     width: auto;
@@ -125,40 +126,8 @@
 
 /* ---------- SUBJECT COLORS ---------- */
 
-.subject-block[data-subject="Video"] {
-    background-color: #ffb3b3;
-}
-
 .subject-block[data-subject="Praktické"] {
     background-color: #ffcc99;
-}
-
-.subject-block[data-subject="Weby"] {
-    background-color: #b3d9ff;
-}
-
-.subject-block[data-subject="Manažerské"] {
-    background-color: #d9b3ff;
-}
-
-.subject-block[data-subject="Seminář"] {
-    background-color: #b3e6cc;
-}
-
-.subject-block[data-subject="OPS"] {
-    background-color: #99ccff;
-}
-
-.subject-block[data-subject="Tělocvik"] {
-    background-color: #ffcc66;
-}
-
-.subject-block[data-subject="Sítě"] {
-    background-color: #99e6e6;
-}
-
-.subject-block[data-subject="Angličtina"] {
-    background-color: #c2b3ff;
 }
 
 .subject-block[data-subject="Matika"] {
@@ -169,20 +138,50 @@
     background-color: #b3b3b3;
 }
 
-.subject-block[data-subject="Čeština"] {
-    background-color: #ffb366;
+.subject-block[data-subject="Angličtina"] {
+    background-color: #c2b3ff;
 }
 
-.subject-block[data-subject="Občanka"] {
-    background-color: #d9b3b3;
+.subject-block[data-subject="Seminář #1"],
+.subject-block[data-subject="Seminář #2"],
+.subject-block[data-subject="Seminář #3"] {
+    background-color: #b3e6cc;
+}
+
+.subject-block[data-subject="Ekonomika"] {
+    background-color: #ffd699;
 }
 
 .subject-block[data-subject="Fyzika"] {
     background-color: #99cc99;
 }
 
+.subject-block[data-subject="Sítě"] {
+    background-color: #99e6e6;
+}
+
+.subject-block[data-subject="Čeština"] {
+    background-color: #ffb366;
+}
+
+.subject-block[data-subject="Manažerké"] {
+    background-color: #d9b3ff;
+}
+
 .subject-block[data-subject="Programování"] {
     background-color: #66b3ff;
+}
+
+.subject-block[data-subject="OPS"] {
+    background-color: #99ccff;
+}
+
+.subject-block[data-subject="Databáze"] {
+    background-color: #80d4b2;
+}
+
+.subject-block[data-subject="Tělocvik"] {
+    background-color: #ffcc66;
 }
 
 

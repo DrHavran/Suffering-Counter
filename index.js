@@ -135,7 +135,9 @@ function updateSubjectHours(now) {
             schoolDays
         );
 
-        totalHours += hours;
+        if (subject !== "Seminář #1") {
+            totalHours += hours;
+        }
 
         const subjectBox = createSubjectBox(
             subject,
