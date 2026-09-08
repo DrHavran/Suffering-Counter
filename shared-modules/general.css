@@ -165,13 +165,3 @@ footer a:hover {
 
     filter: brightness(0) invert(1);
 }
-
-/* ---------- MOBILE ---------- */
-
-@media (max-width: 610px) {
-    html,
-    body {
-        height: auto;
-        min-height: 100%;
-    }
-}
