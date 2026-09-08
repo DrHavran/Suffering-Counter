@@ -20,7 +20,7 @@ const dayName = dayMapping[dayIndex];
 const schedule = fullSchedule[dayName];
 
 document.getElementById("today").textContent =
-    "Dneska je " + dayName;
+    "Dneska je " + dayName.toLowerCase();
 
 
 // ---------- ELEMENTS ----------
@@ -148,7 +148,7 @@ if (!schoolDay) {
         } else {
 
             currentClassElement.textContent =
-                "Je " + currentClass.subject;
+                "Je " + currentClass.subject.toLowerCase();
 
 
             updateTimer(
@@ -632,7 +632,7 @@ if (!schoolDay) {
         } else {
 
             currentClassElement.textContent =
-                "Je " + currentClass.subject;
+                "Je " + currentClass.subject.toLowerCase();
 
 
             updateTimer(
