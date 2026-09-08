@@ -173,7 +173,7 @@ function getSubjects() {
         }
     }
 
-    return [...subjects];
+    return [...subjects].sort((a, b) => a.localeCompare(b));
 }
 
 
