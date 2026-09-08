@@ -170,6 +170,9 @@ footer a:hover {
 
 @media (max-width: 610px) {
     body {
+        min-height: 100dvh;
+        height: auto;
         padding-bottom: 80px;
+        box-sizing: border-box;
     }
 }
