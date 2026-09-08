@@ -20,9 +20,9 @@ export const subjectMapping = {
     "Operační systémy": "OPS",
     "Praktická cvičení": "PCV",
     "Programování": "PRG",
-    "Seminář #1": "SMN #1",
-    "Seminář #2": "SMN #2",
-    "Seminář #3": "SMN #3",
+    "Seminář #1": "SM #1",
+    "Seminář #2": "SM #2",
+    "Seminář #3": "SM #3",
     "Sítě": "NET",
     "Tělocvik": "TEV"
 };
