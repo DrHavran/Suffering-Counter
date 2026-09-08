@@ -1,7 +1,7 @@
 {
   "Pondělí": [
-    { "subject": "Praktické", "start": "8:30", "end": "9:15" },
-    { "subject": "Praktické", "start": "9:25", "end": "10:10" },
+    { "subject": "Praktická cvičení", "start": "8:30", "end": "9:15" },
+    { "subject": "Praktická cvičení", "start": "9:25", "end": "10:10" },
     { "subject": "Matika", "start": "10:30", "end": "11:15" },
     { "subject": "Hardware", "start": "11:25", "end": "12:10" },
     { "subject": "Hardware", "start": "12:20", "end": "13:05" },
@@ -24,13 +24,13 @@
     { "subject": "Ekonomika", "start": "9:25", "end": "10:10" },
     { "subject": "Čeština", "start": "10:30", "end": "11:15" },
     { "subject": "Čeština", "start": "11:25", "end": "12:10" },
-    { "subject": "Manažerké", "start": "12:20", "end": "13:05" }
+    { "subject": "Manažerké dovednosti", "start": "12:20", "end": "13:05" }
   ],
   "Čtvrtek": [
     { "subject": "Programování", "start": "8:30", "end": "9:15" },
     { "subject": "Programování", "start": "9:25", "end": "10:10" },
-    { "subject": "OPS", "start": "10:30", "end": "11:15" },
-    { "subject": "OPS", "start": "11:25", "end": "12:10" },
+    { "subject": "Operační systémy", "start": "10:30", "end": "11:15" },
+    { "subject": "Operační systémy", "start": "11:25", "end": "12:10" },
     { "subject": "Databáze", "start": "12:20", "end": "13:05" },
     { "subject": "Databáze", "start": "13:15", "end": "14:00" },
     { "subject": "Seminář #3", "start": "14:55", "end": "15:40" },
