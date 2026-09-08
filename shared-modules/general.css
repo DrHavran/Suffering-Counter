@@ -169,14 +169,7 @@ footer a:hover {
 /* ---------- MOBILE SCROLL FIX ---------- */
 
 @media (max-width: 610px) {
-    html, body {
-        height: auto;
-        min-height: 100%;
-    }
-
     body {
-        min-height: 100vh;
-        height: auto;
         padding-bottom: 80px;
     }
 }
