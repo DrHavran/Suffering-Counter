@@ -1,5 +1,5 @@
 import { getData } from "../shared-modules/api.js";
-import { dayMapping } from "../shared-modules/config.js";
+import { dayMapping, subjectMapping, subjectBeMapping } from "../shared-modules/config.js";
 
 
 const [dates, fullSchedule] = await Promise.all([
@@ -118,7 +118,7 @@ if (!schoolDay) {
             lesson.end;
 
         section.textContent =
-            lesson.subject;
+            subjectMapping[lesson.subject];
 
         diagram.appendChild(section);
     }
@@ -147,8 +147,8 @@ if (!schoolDay) {
 
         } else {
 
-            currentClassElement.textContent =
-                "Je " + currentClass.subject.toLowerCase();
+            const verb = subjectBeMapping[currentClass.subject];
+            currentClassElement.textContent = verb + " " + currentClass.subject.toLowerCase();
 
 
             updateTimer(
@@ -631,8 +631,8 @@ if (!schoolDay) {
 
         } else {
 
-            currentClassElement.textContent =
-                "Je " + currentClass.subject.toLowerCase();
+            const verb = subjectBeMapping[currentClass.subject];
+            currentClassElement.textContent = verb + " " + currentClass.subject.toLowerCase();
 
 
             updateTimer(
