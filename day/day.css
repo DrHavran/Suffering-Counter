@@ -126,7 +126,7 @@
 
 /* ---------- SUBJECT COLORS ---------- */
 
-.subject-block[data-subject="Praktické"] {
+.subject-block[data-subject="Praktická cvičení"] {
     background-color: #ffcc99;
 }
 
@@ -164,7 +164,7 @@
     background-color: #ffb366;
 }
 
-.subject-block[data-subject="Manažerké"] {
+.subject-block[data-subject="Manažerké dovednosti"] {
     background-color: #d9b3ff;
 }
 
@@ -172,7 +172,7 @@
     background-color: #66b3ff;
 }
 
-.subject-block[data-subject="OPS"] {
+.subject-block[data-subject="Operační systémy"] {
     background-color: #99ccff;
 }
 
