@@ -165,3 +165,17 @@ footer a:hover {
 
     filter: brightness(0) invert(1);
 }
+
+/* ---------- MOBILE SCROLL FIX ---------- */
+
+@media (max-width: 610px) {
+    html, body {
+        height: auto;     
+        min-height: 100%;
+    }
+
+    body {
+        min-height: 100vh;
+        height: auto;
+    }
+}
