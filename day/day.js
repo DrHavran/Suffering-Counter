@@ -147,7 +147,7 @@ if (!schoolDay) {
 
         } else {
 
-            const verb = subjectBeMapping[currentClass.subject] | "Je";
+            const verb = subjectBeMapping[currentClass.subject] || "Je";
             currentClassElement.textContent = verb + " " + currentClass.subject.toLowerCase();
 
 
@@ -631,7 +631,7 @@ if (!schoolDay) {
 
         } else {
 
-            const verb = subjectBeMapping[currentClass.subject] | "Je";
+            const verb = subjectBeMapping[currentClass.subject] || "Je";
             currentClassElement.textContent = verb + " " + currentClass.subject.toLowerCase();
 
 
