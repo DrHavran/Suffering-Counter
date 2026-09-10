@@ -30,7 +30,7 @@ export const subjectMapping = {
 export const subjectBeMapping = {
     "Angličtina": "Je",
     "Čeština": "Je",
-    "Databáze": "Je",
+    "Databáze": "Jsou",
     "Ekonomika": "Je",
     "Fyzika": "Je",
     "Hardware": "Je",
