@@ -4,7 +4,7 @@ const tests = await getTests();
 
 const validTests = tests.filter(test => !isExpired(test.date));
 
-const container = document.getElementById("mainDiv");
+const container = document.getElementById("tests");
 const info = document.getElementById("info");
 
 if (validTests.length === 0) {
