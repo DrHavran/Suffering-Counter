@@ -1,5 +1,9 @@
 import { getData } from "../shared-modules/api.js";
 import { dayMapping, subjectMapping, subjectBeMapping } from "../shared-modules/config.js";
+import {
+    filterScheduleForDay,
+    setupSeminarFilterButton
+} from "../shared-modules/cookies.js";
 
 
 const [dates, fullSchedule] = await Promise.all([
@@ -17,10 +21,12 @@ const currentTime = new Date();
 
 const dayIndex = currentTime.getDay();
 const dayName = dayMapping[dayIndex];
-const schedule = fullSchedule[dayName];
+const schedule = filterScheduleForDay(fullSchedule[dayName], dayIndex);
 
 document.getElementById("today").textContent =
     "Dneska je " + dayName.toLowerCase();
+
+setupSeminarFilterButton();
 
 
 // ---------- ELEMENTS ----------

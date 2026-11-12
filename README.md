@@ -25,3 +25,8 @@ Version 3.0.0:
 - Add a new **Today** page showing progress through the current school day.
 - Moved the data into a separate files fetched by the website.
 - Improve the styling and layout of the new pages.
+
+
+Version 3.1.0:
+
+- Added a buttom to choose your specific seminars so that timers are correctly matched with your schedule

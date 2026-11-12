@@ -1,5 +1,9 @@
 import { dayMapping } from "../shared-modules/config.js";
 import { getData } from "../shared-modules/api.js";
+import {
+    filterScheduleForDay,
+    setupSeminarFilterButton
+} from "../shared-modules/cookies.js";
 
 const [dates, schedule] = await Promise.all([
     getData("dates.json"),
@@ -15,6 +19,7 @@ initialize();
 function initialize() {
     renderSchedule();
     scheduleMidnightRefresh();
+    setupSeminarFilterButton();
 }
 
 
@@ -95,7 +100,7 @@ function createDayCard(date, today) {
         return card;
     }
 
-    const lessons = schedule[dayName] ?? [];
+    const lessons = filterScheduleForDay(schedule[dayName] ?? [], date.getDay());
 
     const list = document.createElement("div");
     list.className = "lessons";

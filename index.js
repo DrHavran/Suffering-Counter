@@ -1,14 +1,22 @@
 import { dayMapping } from "./shared-modules/config.js";
 import { getData } from "./shared-modules/api.js";
+import {
+    filterFullSchedule,
+    setupSeminarFilterButton
+} from "./shared-modules/cookies.js";
 
-const [dates, schedule] = await Promise.all([
+const [dates, rawSchedule] = await Promise.all([
     getData("dates.json"),
     getData("schedule.json")
 ]);
 
+const schedule = filterFullSchedule(rawSchedule);
+
 const schoolEvents = dates.schoolEvents;
 const daysOff = dates.daysOff;
 const publicHolidays = dates.publicHolidays;
+
+setupSeminarFilterButton();
 
 initialize();
 
@@ -133,9 +141,7 @@ function updateSubjectHours(now) {
             schoolDays
         );
 
-        if (subject !== "Seminář #1") {
-            totalHours += hours;
-        }
+        totalHours += hours;
 
         let subjectBox =
             subjectContainer.querySelector(

@@ -8,6 +8,8 @@ async function loadFooter() {
 
     const response = await fetch(basePath + "/components/footer.html");
     footer.innerHTML = await response.text();
+
+    document.dispatchEvent(new Event("footerLoaded"));
 }
 
 loadFooter();
